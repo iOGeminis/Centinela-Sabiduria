@@ -3,7 +3,7 @@ com.iogeminis.sabiduriaiah.sentinel
 
 Logotipo de la consola
 IAM y administración
-/
+Traductor IAHBECEDARIO v10.40.63.1001155243.6-release (701065242)/
 Roles
 Predefinido
 Personalizado
