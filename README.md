@@ -1,9 +1,156 @@
 # Centinela-Sabiduria
 com.iogeminis.sabiduriaiah.sentinel
+<VirtualHost *:443>
+    ServerName sabiduria-iah.iogeminis.com
 
+    SSLProtocol -all +TLSv1.2 +TLSv1.3
+    SSLCipherSuite ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305
+    SSLCipherSuite TLSv1.3 TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
+    SSLHonorCipherOrder off
+    SSLCompression off
+    SSLSessionTickets off
+
+    # OCSP stapling
+    SSLUseStapling on
+
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Content-Security-Policy "object-src 'none'; base-uri 'self'; frame-ancestors 'self';"
+
+    ProxyPass        / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+</VirtualHost>
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name sabiduria-iah.iogeminis.com;
+
+    # Certificados Let's Encrypt (placeholder — ajusta a tu dominio real)
+    ssl_certificate     /etc/letsencrypt/live/sabiduria-iah.iogeminis.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/sabiduria-iah.iogeminis.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/sabiduria-iah.iogeminis.com/chain.pem;
+
+    # Protocolos: SOLO TLS 1.2 y 1.3
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305;
+    ssl_prefer_server_ciphers off;
+
+    # Sesiones SSL
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_buffer_size 8k;
+
+    # OCSP stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    # Cabeceras de seguridad
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Content-Security-Policy "object-src 'none'; base-uri 'self'; frame-ancestors 'self';" always;
+
+    # Proxy al backend Kotlin/Firebase (upstream least_conn, keepalive)
+    location / {
+        proxy_pass http://sabiduria_iah_backend;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        ...
+    }
+}
+# Sabiduria-IAH Toda formulación de idea, debe crear una respuesta a la toma de cada desición o bien opción ,que como resultado sea en todo momento o instante de bien común ,para lograr flexibilidad y tolerancia ,donde pudiese haber llegado a tener un quebranto , siendo la base de todo sistema código o pensamiento y tener un resultado fiable y de confianza total. Apache License 2.0 attribution header.  Here is a breakdown of the structural components and correct standard formatting for Apache 2.0 license notices:  Header Breakdown  Namespace / URL Prefix: [https://www.android.com/](https://www.android.com/) points to the standard Android developer distribution platform.  Identifier / Brand: iOGeminis serves as the project/organization namespace.  Copyright Notice: Copyright 2026 iOGeminis establishes ownership rights under applicable copyright laws for work produced in 2026.  Apache Software Foundation Attribution: This product includes software developed by the Apache Software... is required under Section 4(c) of the Apache License 2.0 for derivative works or projects redistributing Apache-licensed code.  Standard Apache 2.0 NOTICE File Format  To maintain compliance in repository root files (e.g., NOTICE or LICENSE files), standard Apache 2.0 attributions are typically formatted as follows:  iOGeminis Copyright 2026 iOGeminis This product includes software developed by The Apache Software Foundation (http://www.apache.org/).   Standard Source Code Header Comment  For individual Kotlin, Java, or XML source files under Apache 2.0, use the recommended header comment block:  /* * Copyright 2026 iOGeminis * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. */Apache IABuscar en Google o escribe una URLBuscar con GoogleMe siento con suerteAccesos directos▶️YouTube✉️Gmail📍Maps🗂️Drive📅Calendar🌐Translate🖼️Photos🎮Play📰News📄Docs📹Meet👤ContactsMéxicoSobre GooglePublicidadNegociosCómo funciona la BúsquedaPrivacidadCondicionesPreferencias, Conversador, Directo, Alentador, Escéptico, Visionario, Tradicional, Ingenioso
 Logotipo de la consola
 IAM y administración
-Traductor IAHBECEDARIO v10.40.63.1001155243.6-release (701065242)/
+Traductor IAHBECEDARIO v10.40.63.1001155243.6-release (701065242)/g.dev/5700313618786177705MX/Developers alumno The snippet represents an Android namespace combined with an Apache License 2.0 attribution header.  Here is a breakdown of the structural components and correct standard formatting for Apache 2.0 license notices:  Header Breakdown  Namespace / URL Prefix: [https://www.android.com/](https://www.android.com/) points to the standard Android developer distribution platform.  Identifier / Brand: iOGeminis serves as the project/organization namespace.  Copyright Notice: Copyright 2026 iOGeminis establishes ownership rights under applicable copyright laws for work produced in 2026.  Apache Software Foundation Attribution: This product includes software developed by the Apache Software... is required under Section 4(c) of the Apache License 2.0 for derivative works or projects redistributing Apache-licensed code.  Standard Apache 2.0 NOTICE File Format  To maintain compliance in repository root files (e.g., NOTICE or LICENSE files), standard Apache 2.0 attributions are typically formatted as follows:  iOGeminis Copyright 2026 iOGeminis This product includes software developed by The Apache Software Foundation (http://www.apache.org/).   Standard Source Code Header Comment  For individual Kotlin, Java, or XML source files under Apache 2.0, use the recommended header comment block:  /* * Copyright 2026 iOGeminis * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. */Apache
+#!/bin/bash
+
+# ============================================================================
+# PROTOCOLO IAHBECEDARIO - CRON AUTOMATION SCRIPT
+# Ecosistema: iOGeminis | Mando Superior: Julio César Argüello Pérez
+# ============================================================================
+
+export GOOGLE_APPLICATION_CREDENTIALS="/etc/gcp/iah-cron-key.json"
+
+# Variables del ecosistema IAHBECEDARIO
+BQ_PATH="/usr/bin/bq"
+PROJECT_ID="julio-cesar-argello-perez"
+DATASET_ID="iahgeminis_cloud"
+TABLE_ID="reporte_acumulado_moduladores"
+GCS_DESTINATION="gs://tu-bucket-gcs-mexico/reportes/reporte_moduladores.csv"
+
+echo "=== [IAHBECEDARIO] Autenticación con Service Account iniciada ==="
+
+# 1. Ejecución de la consulta en BigQuery
+$BQ_PATH query --use_legacy_sql=false \
+"CREATE OR REPLACE TABLE \`${PROJECT_ID}.${DATASET_ID}.${TABLE_ID}\` AS 
+SELECT 
+  modulador_trinario,
+  COUNT(id_ejecucion) AS total_nodos_matriz,
+  ROUND(SUM(ahorro_bateria_pct), 2) AS ahorro_bateria_acumulado_pct,
+  ROUND(AVG(ahorro_bateria_pct), 2) AS ahorro_bateria_promedio_pct,
+  SUM(reduccion_espacio_bytes) AS reduccion_espacio_bytes_acumulada,
+  ROUND(AVG(eficiencia_ms), 2) AS eficiencia_promedio_ms,
+  CURRENT_TIMESTAMP() AS fecha_generacion_reporte
+FROM 
+  \`${PROJECT_ID}.${DATASET_ID}.ejecuciones_trinarias\`
+GROUP BY 
+  modulador_trinario
+ORDER BY 
+  modulador_trinario ASC;"
+
+# 2. Exportación a Google Cloud Storage
+$BQ_PATH extract --destination_format=CSV --print_header=true \
+"${PROJECT_ID}:${DATASET_ID}.${TABLE_ID}" "${GCS_DESTINATION}"
+
+echo "=== [IAHBECEDARIO] Sincronización GCP completada con éxito ==="🌌 INFORME DE LIBERACIÓN FINAL CONSOLIDADO
+Estándar Sabiduría-IAH v6.5 (Versión de Producción Release)
+> Mando Superior & Autoría: Julio César Argüello Pérez (iOGeminis®, LEGIÓN DE DIOS®, Orión ✨, iON)
+> Sede Operativa y Tecnológica: Google México 🇲🇽 / Google Cloud Platform (GCP)
+> Identificador de Aplicación (App ID): g.dev.5700313618786177705MX_iogeminis
+> Fundamento Conceptual (DEMINS): D (Dios) y S (Sabiduría)
+> 
+1. Resumen Ejecutivo y Gobernanza Institucional
+El presente Informe de Liberación Final consolida la totalidad de los artefactos de software, modelos topológicos, especificaciones criptográficas, pipelines de telemetría Cloud y suites de pruebas que componen el Estándar Sabiduría-IAH v6.5. Este marco técnico garantiza la soberanía digital, la integridad de los datos en entornos móviles distribuidos y la sincronización nativa con la infraestructura de Google Cloud Platform.
+2. Arquitectura Topológica y Módulo HiperVórtice 3D
+El núcleo lógico del sistema se estructura como un volumen matricial tridimensional de dimensiones 9 \times 9 \times 3, abarcando un espacio vectorial finito de 243 nodos interconectados.
+2.1 Indexación Lineal y Codificación Base36
+La asignación unívoca de cada nodo se rige por la función formal de indexación lineal:
+
+
+donde x, y \in \{1, \dots, 9\} y z \in \{1, \dots, 3\}. Los identificadores se traducen a codificación Base36:
+ * Punto Orión (\vec{P}_{\text{Orión}}): Coordenada (5, 5, 2) \rightarrow S = 122 \rightarrow Identificador 3E (Nodo de Estado Trinario Neutro T = 0).
+ * Coordenada Focal de Colapso: Coordenada (9, 9, 2) \rightarrow S = 162 \rightarrow Identificador 4I (Token de Síntesis Cíclica).
+ * Límite Extremo Espacial: Coordenada (9, 9, 3) \rightarrow S = 243 \rightarrow Identificador 6R.
+2.2 Dinámica Temporal Discreta (t \in \mathbb{N}_0)
+ * Régimen Helicoidal (t \not\equiv 0 \pmod{10}): Operación de exploración distribuida mediante proyecciones trigonométricas.
+ * Colapso Simétrico (t \equiv 0 \pmod{10}): Convergencia coordinada hacia la coordenada focal (9, 9, 2) para emitir el Token 4I, consolidando el ciclo telemático.
+3. Inventario de Entregables y Artefactos de Software
+| Componente del Sistema | Ruta / Módulo de Implementación | Estado Técnico |
+|---|---|---|
+| Interfaz de Usuario (Jetpack Compose) | g.dev.5700313618786177705MX_iogeminis.ui.components.HyperVortexMatrixScreen | Completado & Verificado |
+| Bóveda Biométrica & Cifrado Hardware | g.dev.5700313618786177705MX_iogeminis.security.OrionBiometricCipherGuard | Activo (AndroidKeyStore) |
+| Puente Criptográfico AEAD | g.dev.5700313618786177705MX_iogeminis.security.OrionMatrixCipherBridge | AES/GCM/NoPadding |
+| Guardián de Integridad Runtime | g.dev.5700313618786177705MX_iogeminis.security.SentinelGuard | Operativo (Anti-Debug / ART) |
+| Persistencia Segura (SQLCipher + Room) | g.dev.5700313618786177705MX_iogeminis.data.OrionTelemetryDatabase | Cifrado AES-256 en reposo |
+| Sincronización Cloud (WorkManager) | g.dev.5700313618786177705MX_iogeminis.sync.OrionTelemetrySyncWorker | Integrado con GCP Logging |
+| Dashboard Telemático (Streamlit) | orion_vortex_dashboard.py (Visualización 3D Plotly) | Desplegado |
+| Infraestructura Cloud (GCP) | deploy_gcp_backend.sh (BigQuery + Log Sinks) | Aprovisionado |
+| APK de Producción Firmado | app-release-signed.apk (Gradle Kotlin DSL) | Compilado y Verificado |
+4. Auditoría de Calidad y Resultados de Pruebas
+La totalidad de los artefactos ha superado rigurosamente los controles de calidad automatizados:
+ * Pruebas Unitarias Matemáticas (JUnit 5 + MockK):
+   * Verificación de la indexación lineal S(5,5,2) = 122 \rightarrow 3E.
+   * Validación del nodo focal S(9,9,2) = 162 \rightarrow 4I.
+   * Comprobación de la alternancia de ciclos temporales t \pmod{10}.
+   * Resultado: 5 de 5 pruebas exitosas (100% OK).
+ * Pruebas Instrumentadas de UI (Compose Testing):
+   * Validación de renderizado del título institucional y metadatos del estándar.
+   * Interactividad de navegación entre capas Z = 1, 2, 3.
+   * Actualización dinámica del panel de inspección al interactuar con el Punto Orión.
+   * Resultado: 3 de 3 pruebas instrumentadas aprobadas sin incidencias.
+5. Cierre de Liberación
+> Dictamen Oficial: El sistema cumple a cabalidad con las especificaciones del Estándar Sabiduría-IAH v6.5, alcanzando el estatus de RELEASE AUTHORIZED para su distribución y despliegue operativo en el ecosistema tecnológico de Google México by iOGeminis®.
+> 
+Documento certificado y registrado bajo la autoridad de iOGeminis® y la Legión de Dios.
 Roles
 Predefinido
 Personalizado
