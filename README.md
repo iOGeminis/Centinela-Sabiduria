@@ -14277,3 +14277,14 @@ Es posible que algunos permisos estén asociados con terceros y que estos los re
    cccv∆           §°        ∆
    
 [a80d254ea_CLA_iOGeminis_Mexico_v2.docx.pdf](https://github.com/user-attachments/files/34700567/a80d254ea_CLA_iOGeminis_Mexico_v2.docx.pdf)
+https://g.dev/iOGeminis/app/git-MX/127.0.0.1/AES_128_GCM+X25519MLKEM768/📁 Root Workspace/
+│
+├── 📄 IAHBECEDARIO v10.40.63... — Registro de versión (Google Doc)
+│
+├── 📁 Perfil-Google/
+│   ├── 📄 Perfil de Desarrollador — Google LLC... (Google Doc)
+│   └── 📄 Perfil-Desarrollador-Google-LLC_g.dev-...MX.html (HTML)
+│
+└── 📁 Sabiduria-IAH/
+    └── 📄 Sabiduria-IAH_Nota-de-fuente_Art-136-CPEUM.pdf (PDF)
+    
